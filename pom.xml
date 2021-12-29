@@ -19,6 +19,7 @@
     <!-- 外部依赖 -->
     <elasticsearch.version>7.16.1</elasticsearch.version>
     <hutool.version>5.7.10</hutool.version>
+    <junit.version>4.13.1</junit.version>
   </properties>
 
   <dependencies>
@@ -26,6 +27,12 @@
       <groupId>cn.hutool</groupId>
       <artifactId>hutool-all</artifactId>
       <version>${hutool.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>${junit.version}</version>
     </dependency>
   </dependencies>
 
