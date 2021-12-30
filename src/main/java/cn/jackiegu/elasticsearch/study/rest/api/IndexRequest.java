@@ -67,6 +67,12 @@ public class IndexRequest extends BaseRequest {
             "        \"type\": \"text\"" +
             "      }" +
             "    }" +
+            "  }," +
+            "  \"settings\": {" +
+            "    \"index\": {" +
+            "      \"number_of_shards\": 1," +
+            "      \"number_of_replicas\": 0" +
+            "    }" +
             "  }" +
             "}";
         System.out.println(params.replaceAll(" ", ""));
