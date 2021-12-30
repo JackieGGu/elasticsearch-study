@@ -1,6 +1,8 @@
 package cn.jackiegu.elasticsearch.study.rest.api;
 
 import cn.hutool.http.HttpUtil;
+import cn.hutool.http.Method;
+import cn.jackiegu.elasticsearch.study.util.LoggerUtil;
 import org.junit.Test;
 
 /**
@@ -18,8 +20,13 @@ public class ClusterRequest extends BaseRequest {
     @Test
     public void getNodes() {
         String url = MASTER_NODE_ADDRESS + "/_cat/nodes?v";
-        String result = HttpUtil.get(url);
-        System.out.println(result);
+        LoggerUtil.info("URL:");
+        System.out.println(url + "\n");
+        LoggerUtil.info("Method:");
+        System.out.println(Method.GET + "\n");
+        String response = HttpUtil.get(url);
+        LoggerUtil.info("Response:");
+        System.out.println(response);
     }
 
     /**
@@ -28,8 +35,13 @@ public class ClusterRequest extends BaseRequest {
     @Test
     public void getHealth() {
         String url = MASTER_NODE_ADDRESS + "/_cat/health?v";
-        String result = HttpUtil.get(url);
-        System.out.println(result);
+        LoggerUtil.info("URL:");
+        System.out.println(url + "\n");
+        LoggerUtil.info("Method:");
+        System.out.println(Method.GET + "\n");
+        String response = HttpUtil.get(url);
+        LoggerUtil.info("Response:");
+        System.out.println(response);
     }
 
     /**
@@ -38,8 +50,13 @@ public class ClusterRequest extends BaseRequest {
     @Test
     public void getIndices() {
         String url = MASTER_NODE_ADDRESS + "/_cat/indices?v";
-        String result = HttpUtil.get(url);
-        System.out.println(result);
+        LoggerUtil.info("URL:");
+        System.out.println(url + "\n");
+        LoggerUtil.info("Method:");
+        System.out.println(Method.GET + "\n");
+        String response = HttpUtil.get(url);
+        LoggerUtil.info("Response:");
+        System.out.println(response);
     }
 
     /**
@@ -48,7 +65,12 @@ public class ClusterRequest extends BaseRequest {
     @Test
     public void getState() {
         String url = MASTER_NODE_ADDRESS + "/_cluster/state?pretty";
-        String result = HttpUtil.get(url);
-        System.out.println(result);
+        LoggerUtil.info("URL:");
+        System.out.println(url + "\n");
+        LoggerUtil.info("Method:");
+        System.out.println(Method.GET + "\n");
+        String response = HttpUtil.get(url);
+        LoggerUtil.info("Response:");
+        System.out.println(response);
     }
 }

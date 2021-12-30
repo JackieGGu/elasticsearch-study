@@ -3,6 +3,7 @@ package cn.jackiegu.elasticsearch.study.rest.api;
 import cn.hutool.http.HttpUtil;
 import cn.hutool.http.Method;
 import cn.hutool.json.JSONUtil;
+import cn.jackiegu.elasticsearch.study.util.LoggerUtil;
 import org.junit.Test;
 
 /**
@@ -26,6 +27,10 @@ public class IndexRequest extends BaseRequest {
         // 索引名称
         String name = "index_study";
         String url = MASTER_NODE_ADDRESS + "/" + name;
+        LoggerUtil.info("URL:");
+        System.out.println(url + "\n");
+        LoggerUtil.info("Method:");
+        System.out.println(Method.PUT + "\n");
         /*
          * ES7常用字段类型
          *   核心字段类型
@@ -75,9 +80,11 @@ public class IndexRequest extends BaseRequest {
             "    }" +
             "  }" +
             "}";
-        System.out.println(params.replaceAll(" ", ""));
-        String result = HttpUtil.createRequest(Method.PUT, url).body(params).execute().body();
-        System.out.println(JSONUtil.parse(result).toStringPretty());
+        LoggerUtil.info("Body:");
+        System.out.println(JSONUtil.parse(params).toStringPretty() + "\n");
+        String response = HttpUtil.createRequest(Method.PUT, url).body(params).execute().body();
+        LoggerUtil.info("Response:");
+        System.out.println(JSONUtil.parse(response).toStringPretty());
     }
 
     /**
@@ -88,8 +95,13 @@ public class IndexRequest extends BaseRequest {
         // 索引名称
         String name = "index_study";
         String url = MASTER_NODE_ADDRESS + "/" + name;
-        String result = HttpUtil.createRequest(Method.DELETE, url).execute().body();
-        System.out.println(JSONUtil.parse(result).toStringPretty());
+        LoggerUtil.info("URL:");
+        System.out.println(url + "\n");
+        LoggerUtil.info("Method:");
+        System.out.println(Method.DELETE + "\n");
+        String response = HttpUtil.createRequest(Method.DELETE, url).execute().body();
+        LoggerUtil.info("Response:");
+        System.out.println(JSONUtil.parse(response).toStringPretty());
     }
 
     /**
@@ -100,6 +112,10 @@ public class IndexRequest extends BaseRequest {
         // 索引名称
         String name = "index_study";
         String url = MASTER_NODE_ADDRESS + "/" + name + "/_mapping";
+        LoggerUtil.info("URL:");
+        System.out.println(url + "\n");
+        LoggerUtil.info("Method:");
+        System.out.println(Method.PUT + "\n");
         String params = "{" +
             "  \"properties\": {" +
             "    \"family\": {" +
@@ -107,8 +123,11 @@ public class IndexRequest extends BaseRequest {
             "    }" +
             "  }" +
             "}";
-        String result = HttpUtil.createRequest(Method.PUT, url).body(params).execute().body();
-        System.out.println(JSONUtil.parse(result).toStringPretty());
+        LoggerUtil.info("Body:");
+        System.out.println(JSONUtil.parse(params).toStringPretty() + "\n");
+        String response = HttpUtil.createRequest(Method.PUT, url).body(params).execute().body();
+        LoggerUtil.info("Response:");
+        System.out.println(JSONUtil.parse(response).toStringPretty());
     }
 
     /**
@@ -119,7 +138,12 @@ public class IndexRequest extends BaseRequest {
         // 索引名称
         String name = "index_study";
         String url = MASTER_NODE_ADDRESS + "/" + name;
-        String result = HttpUtil.get(url);
-        System.out.println(JSONUtil.parse(result).toStringPretty());
+        LoggerUtil.info("URL:");
+        System.out.println(url + "\n");
+        LoggerUtil.info("Method:");
+        System.out.println(Method.GET + "\n");
+        String response = HttpUtil.get(url);
+        LoggerUtil.info("Response:");
+        System.out.println(JSONUtil.parse(response).toStringPretty());
     }
 }
