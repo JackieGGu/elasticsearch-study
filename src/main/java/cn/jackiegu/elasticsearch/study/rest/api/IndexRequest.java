@@ -52,7 +52,7 @@ public class IndexRequest extends BaseRequest {
          *     - Token count: token_count(统计字符串分词后的词项个数)
          *     - ......
          */
-        String params = "{" +
+        String body = "{" +
             "  \"mappings\": {" +
             "    \"dynamic\": \"strict\"," +
             "    \"properties\": {" +
@@ -81,8 +81,8 @@ public class IndexRequest extends BaseRequest {
             "  }" +
             "}";
         LoggerUtil.info("Body:");
-        System.out.println(JSONUtil.parse(params).toStringPretty() + "\n");
-        String response = HttpUtil.createRequest(Method.PUT, url).body(params).execute().body();
+        System.out.println(JSONUtil.parse(body).toStringPretty() + "\n");
+        String response = HttpUtil.createRequest(Method.PUT, url).body(body).execute().body();
         LoggerUtil.info("Response:");
         System.out.println(JSONUtil.parse(response).toStringPretty());
     }
@@ -116,7 +116,7 @@ public class IndexRequest extends BaseRequest {
         System.out.println(url + "\n");
         LoggerUtil.info("Method:");
         System.out.println(Method.PUT + "\n");
-        String params = "{" +
+        String body = "{" +
             "  \"properties\": {" +
             "    \"family\": {" +
             "      \"type\": \"nested\"" +
@@ -124,8 +124,8 @@ public class IndexRequest extends BaseRequest {
             "  }" +
             "}";
         LoggerUtil.info("Body:");
-        System.out.println(JSONUtil.parse(params).toStringPretty() + "\n");
-        String response = HttpUtil.createRequest(Method.PUT, url).body(params).execute().body();
+        System.out.println(JSONUtil.parse(body).toStringPretty() + "\n");
+        String response = HttpUtil.createRequest(Method.PUT, url).body(body).execute().body();
         LoggerUtil.info("Response:");
         System.out.println(JSONUtil.parse(response).toStringPretty());
     }
