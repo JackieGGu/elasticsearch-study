@@ -26,7 +26,7 @@ public class IndexRequest extends BaseRequest {
     public void create() {
         // 索引名称
         String name = "index_study";
-        String url = MASTER_NODE_ADDRESS + "/" + name;
+        String url = MASTER_NODE_ADDRESS + "/" + name + "?pretty";
         LoggerUtil.info("URL:");
         System.out.println(url + "\n");
         LoggerUtil.info("Method:");
@@ -84,7 +84,7 @@ public class IndexRequest extends BaseRequest {
         System.out.println(JSONUtil.parse(body).toStringPretty() + "\n");
         String response = HttpUtil.createRequest(Method.PUT, url).body(body).execute().body();
         LoggerUtil.info("Response:");
-        System.out.println(JSONUtil.parse(response).toStringPretty());
+        System.out.println(response);
     }
 
     /**
@@ -94,14 +94,14 @@ public class IndexRequest extends BaseRequest {
     public void delete() {
         // 索引名称
         String name = "index_study";
-        String url = MASTER_NODE_ADDRESS + "/" + name;
+        String url = MASTER_NODE_ADDRESS + "/" + name + "?pretty";
         LoggerUtil.info("URL:");
         System.out.println(url + "\n");
         LoggerUtil.info("Method:");
         System.out.println(Method.DELETE + "\n");
         String response = HttpUtil.createRequest(Method.DELETE, url).execute().body();
         LoggerUtil.info("Response:");
-        System.out.println(JSONUtil.parse(response).toStringPretty());
+        System.out.println(response);
     }
 
     /**
@@ -111,7 +111,7 @@ public class IndexRequest extends BaseRequest {
     public void update() {
         // 索引名称
         String name = "index_study";
-        String url = MASTER_NODE_ADDRESS + "/" + name + "/_mapping";
+        String url = MASTER_NODE_ADDRESS + "/" + name + "/_mapping?pretty";
         LoggerUtil.info("URL:");
         System.out.println(url + "\n");
         LoggerUtil.info("Method:");
@@ -127,7 +127,7 @@ public class IndexRequest extends BaseRequest {
         System.out.println(JSONUtil.parse(body).toStringPretty() + "\n");
         String response = HttpUtil.createRequest(Method.PUT, url).body(body).execute().body();
         LoggerUtil.info("Response:");
-        System.out.println(JSONUtil.parse(response).toStringPretty());
+        System.out.println(response);
     }
 
     /**
@@ -137,13 +137,47 @@ public class IndexRequest extends BaseRequest {
     public void get() {
         // 索引名称
         String name = "index_study";
-        String url = MASTER_NODE_ADDRESS + "/" + name;
+        String url = MASTER_NODE_ADDRESS + "/" + name + "?pretty";
         LoggerUtil.info("URL:");
         System.out.println(url + "\n");
         LoggerUtil.info("Method:");
         System.out.println(Method.GET + "\n");
         String response = HttpUtil.get(url);
         LoggerUtil.info("Response:");
-        System.out.println(JSONUtil.parse(response).toStringPretty());
+        System.out.println(response);
+    }
+
+    /**
+     * 关闭索引
+     */
+    @Test
+    public void close() {
+        // 索引名称
+        String name = "index_study";
+        String url = MASTER_NODE_ADDRESS + "/" + name + "/_close?pretty";
+        LoggerUtil.info("URL:");
+        System.out.println(url + "\n");
+        LoggerUtil.info("Method:");
+        System.out.println(Method.POST + "\n");
+        String response = HttpUtil.createRequest(Method.POST, url).execute().body();
+        LoggerUtil.info("Response:");
+        System.out.println(response);
+    }
+
+    /**
+     * 打开索引
+     */
+    @Test
+    public void open() {
+        // 索引名称
+        String name = "index_study";
+        String url = MASTER_NODE_ADDRESS + "/" + name + "/_open?pretty";
+        LoggerUtil.info("URL:");
+        System.out.println(url + "\n");
+        LoggerUtil.info("Method:");
+        System.out.println(Method.POST + "\n");
+        String response = HttpUtil.createRequest(Method.POST, url).execute().body();
+        LoggerUtil.info("Response:");
+        System.out.println(response);
     }
 }
